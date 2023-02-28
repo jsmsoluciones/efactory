@@ -6,7 +6,7 @@
                 <a href="/">Nosotros</a>
             </li>
             <li>
-                <a href="#">Tienda</a>
+                <a href="/store">Tienda</a>
             </li>
             <li>
                 <a href="#">Contacto</a>
