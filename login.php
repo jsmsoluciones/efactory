@@ -8,8 +8,9 @@ if (isset($_SESSION['usuario'])) {
 }
 
 $messageError = 'Por favor, verifique sus credenciales.';
-$value = $_COOKIE['error_login'];
-print_r(isset($_COOKIE['error_login']));
+if (isset($_COOKIE['error_login'])) {
+    $value = $_COOKIE['error_login'];
+}
 if ($value >= 4) {
     $messageError = 'Usuario bloqueado, favor esperar...';
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
