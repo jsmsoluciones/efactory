@@ -10,7 +10,7 @@ include('../partials/header.php')
 ?>
 
 <main class="container">
-    <?php if (isset($_COOKIE['flash'])) { ?>
+    <?php if (isset($_COOKIE['password'])) { ?>
 
         <div class='alert alert-danger' role='alert'>
             Necesitas realizar un cambio de contraseña, da click a este botón

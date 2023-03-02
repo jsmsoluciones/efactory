@@ -1,5 +1,4 @@
-    <?php include('./partials/head.php') ?>
-    <?php include('./partials/header.php') ?>
+    <?php include('./partials/encabezado.php'); ?>
 
     <main>
         <div class="brand">

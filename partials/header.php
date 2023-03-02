@@ -11,14 +11,13 @@
             <li>
                 <a href="#">Contacto</a>
             </li>
-            <?php
-            if (isset($_SESSION['usuario'])) {
-                echo "<li><a href='/admin/'>Dashboard</a></li>";
-                echo "<li><a href='/logout'>Salir</a></li>";
-            } else {
-                echo "<li><a href='/login'>login</a></li>";
-            }
-            ?>
+            <?php if (isset($_SESSION['usuario'])) { ?>
+                <li><a href='/admin/'>Dashboard</a></li>
+                <li><a href='/controllers/logoutController'>Salir</a></li>
+            <?php  } else { ?>
+                <li><a href='/login'>login</a></li>
+            <?php } ?>
+
             <li>
                 <a href="#">
                     <Image src="/imgs/search.svg" alt="buscar" width=20px height=20px />

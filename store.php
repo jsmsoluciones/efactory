@@ -1,15 +1,10 @@
 <?php
-include("./config/database.php");
+include './controllers/productController.php';
 
-$sql = "SELECT *, 
-(SELECT nombre FROM categorias WHERE categorias.id = productos.id_categoria limit 1) as categoria 
-FROM productos";
-$smtp = $connection->prepare($sql);
-$smtp->execute();
-$products = $smtp->fetchAll(PDO::FETCH_ASSOC);
+$productsCtrl = new ProductController;
+$products = $productsCtrl->getAllProducts();
 
-include('./partials/head.php');
-include('./partials/header.php')
+include('./partials/encabezado.php');
 ?>
 <br>
 <div class="container">
