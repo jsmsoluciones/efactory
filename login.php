@@ -8,6 +8,7 @@ if (isset($_SESSION['usuario'])) {
 }
 
 $messageError = 'Por favor, verifique sus credenciales.';
+$value = 0;
 if (isset($_COOKIE['error_login'])) {
     $value = $_COOKIE['error_login'];
 }

@@ -6,7 +6,16 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 include('../partials/head.php');
-include('../partials/header.php')
+include('../partials/header.php');
+include('../controllers/userController.php');
+
+$user = $_SESSION['usuario'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $userCtrl = new UserController();
+    $userCtrl->changePassword($_POST['password']);
+    setcookie('password', 0, time() - 100);
+}
 ?>
 
 <main class="container">
@@ -15,11 +24,16 @@ include('../partials/header.php')
         <div class='alert alert-danger' role='alert'>
             Necesitas realizar un cambio de contraseña, da click a este botón
             <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>
-                Lanzar demo de modal</button>
+                Cambiar contraseña</button>
         </div>
 
     <?php } ?>
-    <h1>este es el index de usuario logueado</h1>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Bienvenido</h1>
+          <p class="col-md-8 fs-4">hola, <b><?= $user ?></b> Esta es la sección administrativa de <b>Efactory coffe</b></p>
+        </div>
+      </div>
 </main>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

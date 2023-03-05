@@ -31,7 +31,7 @@ class Connection
     }
 
     static public function getCustom($sql){
-        $stmt = Connection::connect()->prepare($sql);
+        $stmt = Connection::connect()->query($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

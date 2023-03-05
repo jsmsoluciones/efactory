@@ -1,5 +1,5 @@
 <?php
-include("./models/database.php");
+include("../models/database.php");
 
 class UserController{
     /**
@@ -13,6 +13,5 @@ class UserController{
         $email = $_SESSION['usuario'];
         $sql = "UPDATE usuario SET password = $hash WHERE email = $email";
         $result = Connection::getCustom($sql);
-        print_r($result);
     }
 }
