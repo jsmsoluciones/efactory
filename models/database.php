@@ -7,32 +7,34 @@ class Connection
         $database = "efactory";
         $user = "root";
         $password = "";
-        try {
-            $connection = new PDO("mysql:host=$server;dbname=$database", $user, $password);
-        } catch (Exception $ex) {
-            die($ex->getMessage());
-        }
+        $connection = new mysqli($server, $user, $password, $database);
+
+        if ($connection->connect_error) {
+            die('Error de conexión: ' . $connection->connect_error);
+        };
         return $connection;
     }
 
-    static public function getAllData($table)
-    {
-        $sql = "SELECT * FROM $table";
-        $stmt = Connection::connect()->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // static public function getAllData($table)
+    // {
+    //     $sql = "SELECT * FROM $table";
+    //     $stmt = Connection::connect()->prepare($sql);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
 
-    static public function getOneData($table, $id){
-        $sql = "SELECT * FROM $table WHERE id = :id limit 1";
-        $stmt = Connection::connect()->prepare($sql);
-        $stmt->execute(array(':id' => $id));
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // static public function getOneData($table, $id)
+    // {
+    //     $sql = "SELECT * FROM $table WHERE id = :id limit 1";
+    //     $stmt = Connection::connect()->prepare($sql);
+    //     $stmt->execute(array(':id' => $id));
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
 
-    static public function getCustom($sql){
-        $stmt = Connection::connect()->query($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // static public function getCustom($sql)
+    // {
+    //     $stmt = Connection::connect()->query($sql);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
 }

@@ -13,7 +13,8 @@ class LoginController
     public function getUser($email, $password)
     {
         $sql = "SELECT * FROM usuario WHERE email = '$email'";
-        $user = Connection::getCustom($sql);
+        $connection = Connection::connect();
+        $user = $connection->query($sql)->fetch_all(MYSQLI_ASSOC);
 
         if (empty($user)) {
             return false;

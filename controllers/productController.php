@@ -14,7 +14,9 @@ class ProductController
         (SELECT nombre FROM categorias WHERE categorias.id = productos.id_categoria limit 1) 
         as categoria FROM productos";
 
-        $products = Connection::getCustom($sql);
+        $connection = Connection::connect();
+        $products = $connection->query($sql)->fetch_all(MYSQLI_ASSOC);
+
         return $products;
     }
 
@@ -25,9 +27,9 @@ class ProductController
      * 
      * @return array producto seleccionado
      */
-    public function getOneProdut($id)
-    {
-        $product = Connection::getOneData('productos', $id);
-        return $product;
-    }
+    // public function getOneProdut($id)
+    // {
+    //     $product = Connection::getOneData('productos', $id);
+    //     return $product;
+    // }
 }

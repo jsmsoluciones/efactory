@@ -16,7 +16,7 @@ include('./partials/encabezado.php');
                         <a href="#"><strong class="d-inline-block mb-2 text-primary"><?php echo $p['categoria'] ?></strong></a>
                         <h3 class="mb-0"><?php echo $p['nombre'] ?></h3>
                         <p class="card-text mb-auto"><?php echo $p['descripcion_es'] ?></p>
-                        <a href="#" class="btn">ver más</a>
+                        <a href="#" class="btn">ver producto</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <img src="<?php echo '/uploads/' . $p['foto1'] ?>" class="rounded mx-auto d-block" alt="<?php echo $p['nombre'] ?>" loading="lazy" style="width: 100px; height: 80%; ">
