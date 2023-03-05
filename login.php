@@ -34,8 +34,9 @@ if ($value >= 4) {
         }
     } else {
         $_SESSION['usuario'] = $email;
+        setcookie('error_login', '', time() - 1);
         if ($password == 'admin') {
-            setcookie('password', 1, time() + 3600);
+            setcookie('password', 1, time() + 30);
         }
         header('Location: /admin');
     }

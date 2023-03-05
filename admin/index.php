@@ -12,9 +12,10 @@ include('../controllers/userController.php');
 $user = $_SESSION['usuario'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    setcookie('password', '', time() - 1);
     $userCtrl = new UserController();
     $userCtrl->changePassword($_POST['password']);
-    setcookie('password', 0, time() - 100);
+    header('Location: /admin');
 }
 ?>
 
