@@ -8,9 +8,9 @@
             <li>
                 <a href="/store">Tienda</a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#">Contacto</a>
-            </li>
+            </li> -->
             <?php if (isset($_SESSION['usuario'])) { ?>
                 <li><a href='/admin/'>Dashboard</a></li>
                 <li><a href='/controllers/logoutController'>Salir</a></li>
@@ -23,11 +23,11 @@
                     <Image src="/imgs/search.svg" alt="buscar" width=20px height=20px />
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="/">
                     <Image src="/imgs/car.svg" alt="shop car" width=20px height=20px />
                 </a>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </header>
@@ -37,7 +37,7 @@
             <span class="navbar-text">
                 <?php print_r($_SESSION['usuario']) ?>
             </span>
-            <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Categorías</a>
+            <a class="btn btn-sm btn-outline-secondary mx-2" href="/admin/categories">Categorías</a>
             <a class="btn btn-sm btn-outline-secondary" href="#">Produtos</a>
             <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Usuarios</a>
         </form>
