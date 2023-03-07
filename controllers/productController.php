@@ -1,8 +1,15 @@
 <?php
-include("./models/database.php");
+// include("./models/database.php");
 
 class ProductController
 {
+    protected $connection;
+
+    public function __construct($connection)
+    {
+        $this->connection = $connection;
+    }
+
     /**
      * Buscar los productos y nombre de la categoria a la cual pertenece
      * 
@@ -14,7 +21,7 @@ class ProductController
         (SELECT nombre FROM categorias WHERE categorias.id = productos.id_categoria limit 1) 
         as categoria FROM productos";
 
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $products = $connection->query($sql)->fetch_all(MYSQLI_ASSOC);
 
         return $products;

@@ -1,7 +1,10 @@
 <?php
+include('./models/database.php');
 include './controllers/productController.php';
 
-$productsCtrl = new ProductController;
+$connection = new Connection;
+
+$productsCtrl = new ProductController($connection);
 $products = $productsCtrl->getAllProducts();
 
 include('./partials/encabezado.php');

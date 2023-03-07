@@ -38,7 +38,7 @@
                 <?php print_r($_SESSION['usuario']) ?>
             </span>
             <a class="btn btn-sm btn-outline-secondary mx-2" href="/admin/categories">Categorías</a>
-            <a class="btn btn-sm btn-outline-secondary" href="#">Produtos</a>
+            <a class="btn btn-sm btn-outline-secondary" href="/admin/products">Produtos</a>
             <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Usuarios</a>
         </form>
     </nav>

@@ -36,7 +36,6 @@ $categories = $categoryCtrl->getAllCategories();
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Acciones</th>
-                        <th scope="col "></th>
                     </tr>
                 </thead>
                 <tbody>
