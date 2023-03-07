@@ -46,8 +46,8 @@ $categories = $categoryCtrl->getAllCategories();
                             <td scope="row"><?= $category['id'] ?></td>
                             <td><?= $category['nombre'] ?></td>
                             <td>
-                                <a name="" id="" class="btn btn-primary" href="/admin/editcategory?id=<?= $category['id'] ?>" role="button">Editar</a>
-
+                                <a class="btn btn-primary" href="/admin/editcategory?id=<?= $category['id'] ?>" role="button">Editar</a>
+                                <a class="btn btn-danger" href="/admin/deletecategory?id=<?= $category['id'] ?>">Eliminar</a>
                             
                             </td>
                         </tr>

@@ -39,4 +39,13 @@ class CategoryController extends Connection{
         $stmt->bind_param('ss', $nombre, $id);
         $stmt->execute();
     }
+
+    public function delete($id) {
+        $sql = "DELETE FROM categorias WHERE id = ?";
+
+        $connection = Connection::connect();
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+    }
 }
