@@ -5,11 +5,14 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: /login');
 }
 
-include('../partials/head.php');
-include('../partials/header.php');
-include('../controllers/categoryController.php');
+include('../../partials/head.php');
+include('../../partials/header.php');
+include('../../models/database.php');
+include('../../controllers/categoryController.php');
 
-$categoryCtrl = new CategoryController();
+$connection = new Connection;
+
+$categoryCtrl = new CategoryController($connection);
 $category = $categoryCtrl->getOneCategory($_GET['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -29,3 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </div>
+
+<?php include('../../partials/footter.php') ?>

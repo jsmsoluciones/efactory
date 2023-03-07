@@ -1,12 +1,19 @@
 <?php
-include("../models/database.php");
+class CategoryController
+{
 
-class CategoryController extends Connection{
+    protected $connection;
+
+    public function __construct($connection)
+    {
+        $this->connection = $connection;
+    }
+
     public function getAllCategories()
     {
         $sql = "SELECT * FROM categorias";
 
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $categories = $connection->query($sql)->fetch_all(MYSQLI_ASSOC);
 
         return $categories;
@@ -16,7 +23,7 @@ class CategoryController extends Connection{
     {
         $sql = "SELECT * FROM categorias WHERE id = $id";
 
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $category = $connection->query($sql)->fetch_assoc();
 
         return $category;
@@ -26,24 +33,26 @@ class CategoryController extends Connection{
     {
         $sql = 'INSERT INTO categorias (nombre) value (?)';
 
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('s', $nombre);
         $stmt->execute();
     }
 
-    public function edit($id, $nombre){
+    public function edit($id, $nombre)
+    {
         $sql = 'UPDATE categorias SET nombre = ? WHERE id = ?';
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('ss', $nombre, $id);
         $stmt->execute();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $sql = "DELETE FROM categorias WHERE id = ?";
 
-        $connection = Connection::connect();
+        $connection = $this->connection->connect();
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();

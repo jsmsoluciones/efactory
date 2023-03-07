@@ -5,11 +5,14 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: /login');
 }
 
-include('../partials/head.php');
-include('../partials/header.php');
-include('../controllers/categoryController.php');
+include('../../partials/head.php');
+include('../../partials/header.php');
+include('../../models/database.php');
+include('../../controllers/categoryController.php');
 
-$categoryCtrl = new CategoryController();
+$connection = new Connection;
+
+$categoryCtrl = new CategoryController($connection);
 $categories = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,8 +48,8 @@ $categories = $categoryCtrl->getAllCategories();
                             <td scope="row"><?= $category['id'] ?></td>
                             <td><?= $category['nombre'] ?></td>
                             <td>
-                                <a class="btn btn-primary" href="/admin/editcategory?id=<?= $category['id'] ?>" role="button">Editar</a>
-                                <a class="btn btn-danger" href="/admin/deletecategory?id=<?= $category['id'] ?>">Eliminar</a>
+                                <a class="btn btn-primary" href="/admin/categories/edit?id=<?= $category['id'] ?>" role="button">Editar</a>
+                                <a class="btn btn-danger" href="/admin/categories/delete?id=<?= $category['id'] ?>">Eliminar</a>
                             
                             </td>
                         </tr>
@@ -123,4 +126,4 @@ $categories = $categoryCtrl->getAllCategories();
     })
 </script>
 
-<?php include('../partials/footter.php') ?>
+<?php include('../../partials/footter.php') ?>
