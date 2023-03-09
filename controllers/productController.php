@@ -10,11 +10,6 @@ class ProductController
         $this->connection = $connection;
     }
 
-    /**
-     * Buscar los productos y nombre de la categoria a la cual pertenece
-     * 
-     * @return array listado de produtos
-     */
     public function getAllProducts()
     {
         $sql = "SELECT *, 
@@ -27,16 +22,13 @@ class ProductController
         return $products;
     }
 
-    /**
-     * Busca un producto especifico
-     * 
-     * @param int $id numero de identificador del producto
-     * 
-     * @return array producto seleccionado
-     */
-    // public function getOneProdut($id)
-    // {
-    //     $product = Connection::getOneData('productos', $id);
-    //     return $product;
-    // }
+    public function create($nombre, $descipcion_es, $descipcion_en, $id_categoria, $link, $foto)
+    {
+        $sql = "INSERT INTO productos (nombre, foto1, descripcion_es, descripcion_en, id_categoria, link) VALUE (?,?,?,?,?,?)";
+
+        $connection = $this->connection->connect();
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('ssssis', $nombre, $foto, $descipcion_es, $descipcion_en, $id_categoria, $link);
+        $stmt->execute();
+    }
 }
