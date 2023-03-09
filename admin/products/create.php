@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imageCtrl = new ImageController;
     $foto1 = $imageCtrl->upload($_FILES['imagen']);
     $productCtrl->create($_POST['nombre'], $_POST['descripcion_es'], $_POST['descripcion_en'], $_POST['id_categoria'], $_POST['link'], $foto1);
+    setcookie('toast', 'Producto creado satisfactoriamente', time() + 20);
     header('location: /admin/products');
 }
 
@@ -65,9 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </select>
         </div>
         <div class="mb-3">
-                    <label for="link" class="form-label">Link</label>
-                    <input type="text" name="link" class="form-control" placeholder="Link de amazon" required>
-                </div>
+            <label for="link" class="form-label">Link</label>
+            <input type="text" name="link" class="form-control" placeholder="Link de amazon" required>
+        </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
