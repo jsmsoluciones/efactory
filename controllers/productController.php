@@ -43,4 +43,24 @@ class ProductController
         $stmt->bind_param('ssssis', $nombre, $foto, $descipcion_es, $descipcion_en, $id_categoria, $link);
         $stmt->execute();
     }
+
+    public function edit($nombre, $descipcion_es, $descipcion_en, $id_categoria, $link, $id)
+    {
+        $sql = "UPDATE productos SET nombre=?, descripcion_es=?, descripcion_en=?, id_categoria=?, link=? WHERE id = ?";
+
+        $connection = $this->connection->connect();
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('sssssi', $nombre, $descipcion_es, $descipcion_en, $id_categoria, $link, $id);
+        $stmt->execute();
+    }
+
+    public function editFull($nombre, $descipcion_es, $descipcion_en, $id_categoria, $link, $foto, $id)
+    {
+        $sql = "UPDATE productos SET nombre=?, foto1=?, descripcion_es=?, descripcion_en=?, id_categoria=?, link=? WHERE id = ?";
+
+        $connection = $this->connection->connect();
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('ssssssi', $nombre, $foto, $descipcion_es, $descipcion_en, $id_categoria, $link,  $id);
+        $stmt->execute();
+    }
 }

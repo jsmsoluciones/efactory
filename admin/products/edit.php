@@ -21,10 +21,18 @@ $categoryCtrl = new CategoryController($connection);
 $categories = $categoryCtrl->getAllCategories();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // $imageCtrl = new ImageController;
-    // $foto1 = $imageCtrl->upload($_FILES['imagen']);
-    // $productCtrl->create($_POST['nombre'], $_POST['descripcion_es'], $_POST['descripcion_en'], $_POST['id_categoria'], $_POST['link'], $foto1);
-    // header('location: /admin/products');
+    if ($_FILES['imagen']['name'] != '') {
+        $imageCtrl = new ImageController;
+        $imageCtrl->delete($product['foto1']);
+        $foto1 = $imageCtrl->upload($_FILES['imagen']);
+
+        $productCtrl->editFull($_POST['nombre'], $_POST['descripcion_es'], $_POST['descripcion_en'], $_POST['id_categoria'], $_POST['link'], $foto1, $_POST['id']);
+
+    } else {
+        $productCtrl->edit($_POST['nombre'], $_POST['descripcion_es'], $_POST['descripcion_en'], $_POST['id_categoria'], $_POST['link'], $_POST['id']);
+    }
+    setcookie('toast', 'Producto editado satisfactoriamente', time() + 20);
+    header('location: /admin/products');
 }
 
 ?>
@@ -36,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
-
+                <input type="hidden" name="id" class="form-control"  value="<?= $product['id'] ?>" required>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre del producto" value="<?= $product['nombre'] ?>" required>
@@ -46,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Seleccione imagen</label>
-                    <input type="file" class="form-control" name="imagen" >
+                    <input type="file" class="form-control" name="imagen">
                     <div class="form-text text-danger">Solo cuando va a cambia la imagen</div>
                 </div>
             </div>
@@ -78,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="mb-3">
             <label for="link" class="form-label">Link</label>
-            <input type="text" name="link" class="form-control" placeholder="Link de amazon" <?= $product['link'] ?> required>
+            <input type="text" name="link" class="form-control" placeholder="Link de amazon" value="<?= $product['link'] ?>" required>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Enviar</button>

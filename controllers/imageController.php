@@ -31,6 +31,17 @@ class ImageController
         }
     }
 
+    public function delete($name)
+    {
+        try {
+            $final = $this->pathDestino . $name;
+            unlink($final);
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
 
     private function extraerData($file)
     {
