@@ -54,7 +54,7 @@ $products = $productCtrl->getAllProducts();
                             <td><?= $p['categoria'] ?></td>
                             <td>
                                 <a class="btn btn-primary" href="/admin/products/edit?id=<?= $p['id'] ?>" role="button">Editar</a>
-                                <a class="btn btn-danger" href="/admin/produts/delete?id=<?= $p['id'] ?>">Eliminar</a>
+                                <a class="btn btn-danger" href="/admin/products/delete?id=<?= $p['id'] ?>">Eliminar</a>
 
                             </td>
                         </tr>

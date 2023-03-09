@@ -63,4 +63,14 @@ class ProductController
         $stmt->bind_param('ssssssi', $nombre, $foto, $descipcion_es, $descipcion_en, $id_categoria, $link,  $id);
         $stmt->execute();
     }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM productos WHERE id = ?";
+
+        $connection = $this->connection->connect();
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+    }
 }
