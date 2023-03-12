@@ -23,11 +23,13 @@
                     <Image src="/imgs/search.svg" alt="buscar" width=20px height=20px />
                 </a>
             </li>
-            <!-- <li>
-                <a href="/">
-                    <Image src="/imgs/car.svg" alt="shop car" width=20px height=20px />
-                </a>
-            </li> -->
+            <li>
+                <select name="lang" id="lang">
+                    <option value="" disabled selected>Seleccione idioma</option>
+                    <option value="es">Español</option>
+                    <option value="en">Ingles</option>
+                </select>
+            </li>
         </ul>
     </nav>
 </header>

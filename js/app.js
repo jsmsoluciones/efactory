@@ -18,3 +18,12 @@ let getCookie = name => {
     }
     return null;
 };
+
+const select = document.getElementById('lang')
+select.addEventListener('change',
+    function () {
+        var selectedOption = this.options[select.selectedIndex];
+        let exp = Date.now() + 3600 * 365;
+        document.cookie = `lang=${selectedOption.value}; expires=${exp}; path=/`;
+        location.reload()
+    });
