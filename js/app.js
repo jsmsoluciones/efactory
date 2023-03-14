@@ -23,7 +23,7 @@ const select = document.getElementById('lang')
 select.addEventListener('change',
     function () {
         var selectedOption = this.options[select.selectedIndex];
-        let exp = Date.now() + 3600 * 365;
+        let exp = Date.now() + 3600 * 24 * 360;
         document.cookie = `lang=${selectedOption.value}; expires=${exp}; path=/`;
         location.reload()
     });
