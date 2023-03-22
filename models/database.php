@@ -7,6 +7,12 @@ class Connection
         $database = "efactory";
         $user = "root";
         $password = "";
+
+        // $server = "localhost";
+        // $database = "id20345771_efactory";
+        // $user = "id20345771_factory";
+        // $password = "NN$9h2wLR>kzr3K3";
+
         $connection = new mysqli($server, $user, $password, $database);
 
         if ($connection->connect_error) {
